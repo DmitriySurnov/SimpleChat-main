@@ -45,7 +45,7 @@
   <ItemGroup>
     <Compile Include="ChatDatabase.cs" />
     <Compile Include="ChatMessage.cs" />
-    <Compile Include="Database.cs" />
+    <Compile Include="Sender.cs" />
     <Compile Include="EventsArgs\ClientSocketEventArgs.cs" />
     <Compile Include="EventsArgs\ClientConnectedArgs.cs" />
     <Compile Include="EventsArgs\ClientSocketExceptionArgs.cs" />
