@@ -38,8 +38,16 @@ namespace ChatServer
         public void Start()
         {
             _serverSocket = new Socket(SocketType.Stream, ProtocolType.IP);
-            _serverSocket.Bind(new IPEndPoint(IPAddress.Loopback, _serverPort));
-            _serverSocket.Listen(MAX_CLIENTS_WAITING_FOR_CONNECT);
+            try
+            {
+                _serverSocket.Bind(new IPEndPoint(IPAddress.Loopback, _serverPort));
+                _serverSocket.Listen(MAX_CLIENTS_WAITING_FOR_CONNECT);
+            }
+            catch (SocketException ex) { 
+                _serverPort++;
+                Start();
+                return;
+            }
             _isServerAlive = true;
 
             StartClientTask();

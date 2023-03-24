@@ -12,3 +12,17 @@ D:\Сетевое програмир\Git\SimpleChat-main\ChatClientForms\obj\Deb
 D:\Сетевое програмир\Git\SimpleChat-main\ChatClientForms\obj\Debug\ChatClientForms.csproj.CopyComplete
 D:\Сетевое програмир\Git\SimpleChat-main\ChatClientForms\obj\Debug\ChatClientForms.exe
 D:\Сетевое програмир\Git\SimpleChat-main\ChatClientForms\obj\Debug\ChatClientForms.pdb
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatClientForms\bin\Debug\ChatClientForms.exe.config
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatClientForms\bin\Debug\ChatClientForms.exe
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatClientForms\bin\Debug\ChatClientForms.pdb
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatClientForms\bin\Debug\Utilities.dll
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatClientForms\bin\Debug\Utilities.pdb
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatClientForms\obj\Debug\ChatClientForms.csproj.AssemblyReference.cache
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatClientForms\obj\Debug\ChatClientForms.csproj.SuggestedBindingRedirects.cache
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatClientForms\obj\Debug\ChatClientForms.Form1.resources
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatClientForms\obj\Debug\ChatClientForms.Properties.Resources.resources
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatClientForms\obj\Debug\ChatClientForms.csproj.GenerateResource.cache
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatClientForms\obj\Debug\ChatClientForms.csproj.CoreCompileInputs.cache
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatClientForms\obj\Debug\ChatClientForms.csproj.CopyComplete
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatClientForms\obj\Debug\ChatClientForms.exe
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatClientForms\obj\Debug\ChatClientForms.pdb

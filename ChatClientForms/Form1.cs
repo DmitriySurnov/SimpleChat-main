@@ -12,6 +12,8 @@ namespace ChatClientForms
     {
         private Socket _socket;
         private bool _stop = false;
+        private delegate void AddTextToLogHandle(string text);
+        private Thread _currentThread;
         public Form1()
         {
             InitializeComponent();
@@ -48,6 +50,10 @@ namespace ChatClientForms
         {
             ConnectClientToServer(new IPEndPoint(IPAddress.Loopback, 10111));
             ShowChatContent(ReceiveChatContent());
+            SendMessageToServer("forma");
+            _currentThread = new Thread(WaitingData);
+            _currentThread.Start();
+            //ThreadStart(WaitingData).Start(ShowChatContent);
         }
 
         private void ConnectClientToServer(IPEndPoint serverEndPoint)
@@ -69,44 +75,58 @@ namespace ChatClientForms
 
         private void ShowChatContent(string chatContent)
         {
-            if (textBox1.Text == "")
-                textBox1.Text = chatContent;
+            //if (textBox1.Text == "")
+            //    textBox1.Text = chatContent;
+            //else
+            //    textBox1.AppendText(chatContent);
+            //textBox1.AppendText(Environment.NewLine);
+            if (textBox1.InvokeRequired)
+            {
+                //rtxtLog.Invoke((AddTextToLogHandle)AddTextToLog, text);
+                textBox1.Invoke((AddTextToLogHandle)ShowChatContent, chatContent);
+            }
             else
-                textBox1.AppendText(chatContent);
-            textBox1.AppendText(Environment.NewLine);
-
+            {
+                //textBox1.AppendText($"{DateTime.Now.ToLongTimeString()} => {chatContent}\n");
+                textBox1.AppendText(chatContent + Environment.NewLine);
+            }
         }
 
-        private void WaitingData(Action<string> action)
+        private void WaitingData()
         {
+            //while (!_stop)
+            //{
             string strka = "";
-                while (!_stop && _socket.Available < 1)
-                {
-                    Thread.Sleep(100);
-                }
-                if (!_stop)
-                {
-                    strka = ReceiveChatContent();
-                }
+            while (!_stop && _socket.Available < 1)
+            {
+                Thread.Sleep(100);
+            }
             if (!_stop)
             {
-                action(strka);
+                strka = ReceiveChatContent();
             }
+            if (!_stop)
+            {
+                ShowChatContent(strka);
+            }
+            //}
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             _stop = false;
-            WaitingData(ShowChatContent);
+            //WaitingData(ShowChatContent);
         }
     }
 
-//    if (rtxtLog.InvokeRequired)
-//            {
-//                rtxtLog.Invoke((AddTextToLogHandle) AddTextToLog, text);
-//            }
-//            else
-//{
-//    rtxtLog.AppendText($"{DateTime.Now.ToLongTimeString()} => {text}\n");
-//}
+    //    if (rtxtLog.InvokeRequired)
+    //            {
+    //                rtxtLog.Invoke((AddTextToLogHandle) AddTextToLog, text);
+    //            }
+    //            else
+    //{
+    //    rtxtLog.AppendText($"{DateTime.Now.ToLongTimeString()} => {text}\n");
+    //}
+
+    //  https://github.com/AndreyChulov/BusesInTown/tree/main/BusesInTown/TownWatchUtility
 }
