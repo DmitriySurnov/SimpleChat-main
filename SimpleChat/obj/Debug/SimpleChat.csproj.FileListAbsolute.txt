@@ -20,3 +20,11 @@ Z:\Мой диск\GitHub\SimpleChat\SimpleChat\obj\Debug\SimpleChat.csprojAssem
 Z:\Мой диск\GitHub\SimpleChat\SimpleChat\obj\Debug\SimpleChat.csproj.CoreCompileInputs.cache
 Z:\Мой диск\GitHub\SimpleChat\SimpleChat\obj\Debug\SimpleChat.exe
 Z:\Мой диск\GitHub\SimpleChat\SimpleChat\obj\Debug\SimpleChat.pdb
+D:\Сетевое програмир\Git\SimpleChat-main\SimpleChat\bin\Debug\SimpleChat.exe.config
+D:\Сетевое програмир\Git\SimpleChat-main\SimpleChat\bin\Debug\SimpleChat.exe
+D:\Сетевое програмир\Git\SimpleChat-main\SimpleChat\bin\Debug\SimpleChat.pdb
+D:\Сетевое програмир\Git\SimpleChat-main\SimpleChat\obj\Debug\SimpleChat.csproj.AssemblyReference.cache
+D:\Сетевое програмир\Git\SimpleChat-main\SimpleChat\obj\Debug\SimpleChat.csproj.SuggestedBindingRedirects.cache
+D:\Сетевое програмир\Git\SimpleChat-main\SimpleChat\obj\Debug\SimpleChat.csproj.CoreCompileInputs.cache
+D:\Сетевое програмир\Git\SimpleChat-main\SimpleChat\obj\Debug\SimpleChat.exe
+D:\Сетевое програмир\Git\SimpleChat-main\SimpleChat\obj\Debug\SimpleChat.pdb
