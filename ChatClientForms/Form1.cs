@@ -74,6 +74,7 @@ namespace ChatClientForms
             else
                 textBox1.AppendText(chatContent);
             textBox1.AppendText(Environment.NewLine);
+
         }
 
         private void WaitingData(Action<string> action)
@@ -99,4 +100,13 @@ namespace ChatClientForms
             WaitingData(ShowChatContent);
         }
     }
+
+//    if (rtxtLog.InvokeRequired)
+//            {
+//                rtxtLog.Invoke((AddTextToLogHandle) AddTextToLog, text);
+//            }
+//            else
+//{
+//    rtxtLog.AppendText($"{DateTime.Now.ToLongTimeString()} => {text}\n");
+//}
 }

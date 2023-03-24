@@ -18,6 +18,12 @@ namespace ChatServer
             _message = message;
         }
 
+        public ChatMessage(string name, string message)
+        {
+            _name= name;
+            _message= message;
+        }
+
         private string GetIpV4Address(EndPoint endPoint)
         {
             var ipEndPoint = (IPEndPoint)endPoint;

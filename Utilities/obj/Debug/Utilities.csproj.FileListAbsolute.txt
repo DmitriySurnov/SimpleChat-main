@@ -10,3 +10,9 @@ D:\Сетевое програмир\23.03.22\SimpleChat-main\Utilities\obj\Debu
 D:\Сетевое програмир\23.03.22\SimpleChat-main\Utilities\obj\Debug\Utilities.csproj.CoreCompileInputs.cache
 D:\Сетевое програмир\23.03.22\SimpleChat-main\Utilities\obj\Debug\Utilities.dll
 D:\Сетевое програмир\23.03.22\SimpleChat-main\Utilities\obj\Debug\Utilities.pdb
+C:\Users\t.student\Source\Repos\SimpleChat-main\Utilities\bin\Debug\Utilities.dll
+C:\Users\t.student\Source\Repos\SimpleChat-main\Utilities\bin\Debug\Utilities.pdb
+C:\Users\t.student\Source\Repos\SimpleChat-main\Utilities\obj\Debug\Utilities.csproj.AssemblyReference.cache
+C:\Users\t.student\Source\Repos\SimpleChat-main\Utilities\obj\Debug\Utilities.csproj.CoreCompileInputs.cache
+C:\Users\t.student\Source\Repos\SimpleChat-main\Utilities\obj\Debug\Utilities.dll
+C:\Users\t.student\Source\Repos\SimpleChat-main\Utilities\obj\Debug\Utilities.pdb

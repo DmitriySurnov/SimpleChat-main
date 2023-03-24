@@ -25,6 +25,21 @@ namespace ChatServer
                 _socketLines.Remove(socket);
             }
         }
+
+        public static void SendMessage(string message, string name, Socket socket)
+        {
+            lock (_socketLinesLockObj)
+            {
+                for (int i = 0; i < _socketLines.Count; i++)
+                {
+                    if (_socketLines[i] != socket)
+                    {
+                        string stroka = new ChatMessage(name, message).ToString();
+                        SocketUtility.SendString(_socketLines[i], stroka, () => { });
+                    }
+                }
+            }
+        }
         public static void SendMessage(string message, ClientSocketEventArgs e, Socket socket)
         {
             lock (_socketLinesLockObj)

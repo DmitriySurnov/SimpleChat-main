@@ -19,6 +19,11 @@ namespace ChatServer
             _chatLines.Add(new ChatMessage(e.ClientSocket.RemoteEndPoint, message));
         }
 
+        public static void AddMessage(string message, string name)
+        {
+            _chatLines.Add(new ChatMessage(name, message));
+        }
+
         public static string GetChat()
         {
             return _chatLines

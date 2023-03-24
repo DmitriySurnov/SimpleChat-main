@@ -15,8 +15,8 @@ namespace ChatClient
         {
             var socket = ConnectClientToServer(new IPEndPoint(IPAddress.Loopback, 10111));
 
-            var chatContent = ReceiveChatContent(socket);
-            ShowChatContent(chatContent);
+            var chatName = GetClientName();
+            SendMessageToServer(socket, chatName);
             Exit(socket);
             do
             {
@@ -134,7 +134,15 @@ namespace ChatClient
 
         private static string GetClientMessage()
         {
+            Console.WriteLine("");
             Console.Write("Your message:");
+            var message = Console.ReadLine();
+            return message;
+        }
+
+        private static string GetClientName()
+        {
+            Console.Write("Your name:");
             var message = Console.ReadLine();
             return message;
         }

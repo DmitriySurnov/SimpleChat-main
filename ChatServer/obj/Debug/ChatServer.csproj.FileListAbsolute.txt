@@ -33,3 +33,14 @@ D:\Сетевое програмир\23.03.22\SimpleChat-main\ChatServer\obj\Deb
 D:\Сетевое програмир\23.03.22\SimpleChat-main\ChatServer\obj\Debug\ChatServer.csproj.CopyComplete
 D:\Сетевое програмир\23.03.22\SimpleChat-main\ChatServer\obj\Debug\ChatServer.exe
 D:\Сетевое програмир\23.03.22\SimpleChat-main\ChatServer\obj\Debug\ChatServer.pdb
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatServer\bin\Debug\ChatServer.exe.config
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatServer\bin\Debug\ChatServer.exe
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatServer\bin\Debug\ChatServer.pdb
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatServer\bin\Debug\Utilities.dll
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatServer\bin\Debug\Utilities.pdb
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatServer\obj\Debug\ChatServer.csproj.AssemblyReference.cache
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatServer\obj\Debug\ChatServer.csproj.SuggestedBindingRedirects.cache
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatServer\obj\Debug\ChatServer.csproj.CoreCompileInputs.cache
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatServer\obj\Debug\ChatServer.csproj.CopyComplete
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatServer\obj\Debug\ChatServer.exe
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatServer\obj\Debug\ChatServer.pdb

@@ -33,3 +33,14 @@ D:\Сетевое програмир\23.03.22\SimpleChat-main\ChatClient\obj\Deb
 D:\Сетевое програмир\23.03.22\SimpleChat-main\ChatClient\obj\Debug\ChatClient.csproj.CopyComplete
 D:\Сетевое програмир\23.03.22\SimpleChat-main\ChatClient\obj\Debug\ChatClient.exe
 D:\Сетевое програмир\23.03.22\SimpleChat-main\ChatClient\obj\Debug\ChatClient.pdb
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatClient\bin\Debug\ChatClient.exe.config
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatClient\bin\Debug\ChatClient.exe
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatClient\bin\Debug\ChatClient.pdb
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatClient\bin\Debug\Utilities.dll
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatClient\bin\Debug\Utilities.pdb
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatClient\obj\Debug\ChatClient.csproj.AssemblyReference.cache
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatClient\obj\Debug\ChatClient.csproj.SuggestedBindingRedirects.cache
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatClient\obj\Debug\ChatClient.csproj.CoreCompileInputs.cache
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatClient\obj\Debug\ChatClient.csproj.CopyComplete
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatClient\obj\Debug\ChatClient.exe
+C:\Users\t.student\Source\Repos\SimpleChat-main\ChatClient\obj\Debug\ChatClient.pdb

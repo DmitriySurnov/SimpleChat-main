@@ -69,6 +69,8 @@ namespace ChatServer
             StartClientTask();
 
             SendChatContentToClient(clientSocket);
+            WaitForDataFromClientAvailable(clientSocket);
+            var name = ReceiveChatMessageFromClient(clientSocket);
             Sender.AddClient(clientSocket);
             do
             {
@@ -76,8 +78,8 @@ namespace ChatServer
                 var chatMessage = ReceiveChatMessageFromClient(clientSocket);
                 if (chatMessage == "")
                     break;
-                ChatDatabase.AddMessage(chatMessage, ClientSocketEventArgs.Create(clientSocket));
-                Sender.SendMessage(chatMessage, ClientSocketEventArgs.Create(clientSocket),clientSocket);
+                ChatDatabase.AddMessage(chatMessage, name);
+                Sender.SendMessage(chatMessage, name ,clientSocket);
             } while (true);
             Sender.RemoveClient(clientSocket);
             DisconnectClient(clientSocket);
