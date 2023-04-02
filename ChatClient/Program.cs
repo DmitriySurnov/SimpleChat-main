@@ -17,23 +17,29 @@ namespace ChatClient
 
             var Nickname = GetClientName();
             SendMessageToServer(socket, Nickname);
-            ExitTheChatByPressing(socket);
             do
             {
+                Information();
                 WaitingData(socket);
                 var message = GetClientMessage();
-
-                if (message != "")
-                    SendMessageToServer(socket, message);
+                SendMessageToServer(socket, message);
+                if (message == "")
+                    ExitTheChat(socket);
 
             } while (!_isClientAlive);
+        }
+
+        private static void Information()
+        {
+            Console.WriteLine("To finish waiting for a message to be received, press Enter.");
+            Console.WriteLine("To exit, send an empty message.");
         }
 
 
         private static void WaitingData(Socket socket)
         {
             _StopWaitingData = false;
-            Enter();
+            ByPressingTheEndDataWaitingKey();
             Console.WriteLine("Waiting for messages");
             bool OutputНeaders = true;
             while (!_StopWaitingData)
@@ -60,8 +66,8 @@ namespace ChatClient
             }
         }
 
-        // при нажатие Enter прекрашает ожидать данные из сети
-        private static async void Enter()
+        // при нажатии Enter прекращает ожидать данные из сети
+        private static async void ByPressingTheEndDataWaitingKey()
         {
             await Task.Run(() => WaitingKeyPress(ConsoleKey.Enter));
             _StopWaitingData = true;
@@ -77,13 +83,9 @@ namespace ChatClient
             } while (keyInfo.Key != key);
         }
 
-        // при нажатие клавише Esc выходит из приложения.
-        private static async void ExitTheChatByPressing(Socket socket)
+        private static void ExitTheChat(Socket socket)
         {
-            await Task.Run(()  => WaitingKeyPress(ConsoleKey.Escape));
-
             _isClientAlive = true;
-            SendMessageToServer(socket, "");
 
             DisconnectClientFromServer(socket);
 

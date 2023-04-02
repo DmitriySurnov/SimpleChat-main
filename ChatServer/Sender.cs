@@ -1,5 +1,4 @@
-﻿using ChatServer.EventsArgs;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net.Sockets;
 using Utilities;
 
