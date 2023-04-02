@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
+using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 
@@ -7,6 +9,48 @@ namespace Utilities
 {
     public static class SocketUtility
     {
+
+        public static string GetLocalAddress()
+        {
+            return Dns
+                .GetHostEntry(Dns.GetHostName())
+                .AddressList
+                .First(x => x.AddressFamily == AddressFamily.InterNetwork)
+                .ToString();
+        }
+
+        public static IPAddress CreateBroadcastAddress()
+        {
+            string localIpAddess = GetLocalAddress();
+
+            var localIpAddessNumbers = localIpAddess.Split('.');
+            localIpAddessNumbers[3] = "255";
+            var remoteIpAddressInString = localIpAddessNumbers
+                .Aggregate("", (acc, value) => $"{acc}.{value}")
+                .Substring(1);
+            var broadcastAddress = IPAddress.Parse(remoteIpAddressInString);
+            return broadcastAddress;
+        }
+
+        public static string ReceiveString(Socket socket)
+        {
+            WaitDataFromSocket(socket);
+            using (Stream dataStream = new MemoryStream())
+            using (BinaryReader dataStreamReader = new BinaryReader(dataStream))
+            {
+                byte[] dataBuffer = new byte[1024];
+                socket.Receive(dataBuffer);
+                dataStream.Seek(0, SeekOrigin.Begin);
+                dataStream.Write(dataBuffer, 0, sizeof(long));
+                dataStream.Seek(0, SeekOrigin.Begin);
+                var razmer = dataStreamReader.ReadInt64();
+                dataStream.Seek(0, SeekOrigin.Begin);
+                dataStream.Write(dataBuffer, 8, Convert.ToInt32(razmer) + 1);
+                dataStream.Seek(0, SeekOrigin.Begin);
+                return dataStreamReader.ReadString();
+            }
+        }
+
         public static string ReceiveString(Socket socket, 
             Action onReceiveDataSizeCheckFail, Action onReceiveDataCheckFail)
         {

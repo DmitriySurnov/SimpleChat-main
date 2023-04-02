@@ -8,6 +8,7 @@ namespace ChatServer
     {
         static void Main(string[] args)
         {
+            using (var serverLocator = new ServerLocator())
             using (var server = Server.Initialise(10111))
             {
                 server.AcceptClientException += Server_AcceptClientException;
@@ -20,7 +21,7 @@ namespace ChatServer
                 server.ClientMessageReceived += ServerClientMessageReceived;
                 server.ClientDisconnected += Server_ClientDisconnected;
                 server.Start();
-
+                serverLocator.Start();
                 Console.ReadLine();
                 server.Stop();
             }

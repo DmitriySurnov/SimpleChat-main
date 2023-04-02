@@ -11,28 +11,78 @@ namespace ChatClient
     {
         private static bool _isClientAlive = false;
         private static bool _StopWaitingData = false;
+        private static bool _StopSearchingServers = false;
         static void Main(string[] args)
         {
-            var socket = ConnectClientToServer(new IPEndPoint(IPAddress.Loopback, 10111));
-
-            var Nickname = GetClientName();
-            SendMessageToServer(socket, Nickname);
-            do
+            using (var serverLocator = new ServerLocator())
             {
-                Information();
-                WaitingData(socket);
-                var message = GetClientMessage();
-                SendMessageToServer(socket, message);
-                if (message == "")
-                    ExitTheChat(socket);
+                serverLocator.Start();
 
-            } while (!_isClientAlive);
+                var socket = ServerSelection(serverLocator);
+
+                var Nickname = GetClientName();
+                SendMessageToServer(socket, Nickname);
+                do
+                {
+                    Information();
+                    WaitingData(socket);
+                    var message = GetClientMessage();
+                    SendMessageToServer(socket, message);
+                    if (message == "")
+                        ExitTheChat(socket);
+
+                } while (!_isClientAlive);
+            }
         }
 
         private static void Information()
         {
             Console.WriteLine("To finish waiting for a message to be received, press Enter.");
             Console.WriteLine("To exit, send an empty message.");
+        }
+
+        private static Socket ServerSelection(ServerLocator locator)
+        {
+            StopServerSearch(locator);
+            while (true)
+            {
+                if (_StopSearchingServers)
+                {
+                    int numberServer;
+                    var servers = locator.Servers;
+                    Console.WriteLine("Выбетие сервер: ");
+                    for (int i = 0; i < servers.Count; i++)
+                    {
+                        Console.WriteLine($"{i} {servers[i]}");
+                    }
+                    Console.Write("Введите номер сервера к которому хотите подключиться - ");
+                    try
+                    {
+                        numberServer = int.Parse(Console.ReadLine());
+                        if (!(numberServer >= 0 && servers.Count > numberServer))
+                            throw new Exception();
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Введен не правельный номер серрвера");
+                        continue;
+                    }
+                    var mass = servers[numberServer].Split(':');
+                    return ConnectClientToServer(new IPEndPoint(IPAddress.Parse(mass[0]), int.Parse(mass[1])));
+                }
+                else
+                {
+                    Task.Delay(1000);
+                    continue;
+                }
+            }
+        }
+
+        private static async void StopServerSearch(ServerLocator locator)
+        {
+            await Task.Run(() => Task.Delay(3000));
+                locator.Stop();
+                _StopSearchingServers = true;
         }
 
 
@@ -133,6 +183,11 @@ namespace ChatClient
         {
             Console.Write("Your name:");
             var message = Console.ReadLine();
+            if (message == "")
+            {
+                Console.WriteLine("You didn't enter a name");
+                GetClientName();
+            }
             return message;
         }
 

@@ -40,10 +40,12 @@ namespace ChatServer
             _serverSocket = new Socket(SocketType.Stream, ProtocolType.IP);
             try
             {
-                _serverSocket.Bind(new IPEndPoint(IPAddress.Loopback, _serverPort));
+                var ipAdress = IPAddress.Parse(SocketUtility.GetLocalAddress());
+                _serverSocket.Bind(new IPEndPoint(ipAdress, _serverPort));
                 _serverSocket.Listen(MAX_CLIENTS_WAITING_FOR_CONNECT);
+                ServerLocator.Port = _serverPort;
             }
-            catch (SocketException ex) { 
+            catch{ 
                 _serverPort++;
                 Start();
                 return;
