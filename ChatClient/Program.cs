@@ -9,15 +9,15 @@ namespace ChatClient
 {
     internal class Program
     {
-        private static bool _stop = false;
-        private static bool _stops = false;
+        private static bool _isClientAlive = false;
+        private static bool _StopWaitingData = false;
         static void Main(string[] args)
         {
             var socket = ConnectClientToServer(new IPEndPoint(IPAddress.Loopback, 10111));
 
-            var chatName = GetClientName();
-            SendMessageToServer(socket, chatName);
-            Exit(socket);
+            var Nickname = GetClientName();
+            SendMessageToServer(socket, Nickname);
+            ExitTheChatByPressing(socket);
             do
             {
                 WaitingData(socket);
@@ -25,71 +25,64 @@ namespace ChatClient
 
                 if (message != "")
                     SendMessageToServer(socket, message);
-                /*
-                * Потенциально будет нужна в ходе дальнейшей разработки
-                * В текущей версии строку ожидания Enter заменяет ожидание в
-                * 1 секунду ниже
-                */
-                //WaitForEnterPressedToCloseApplication();
 
-            } while (!_stop);
+            } while (!_isClientAlive);
         }
+
 
         private static void WaitingData(Socket socket)
         {
-            _stops = false;
+            _StopWaitingData = false;
             Enter();
             Console.WriteLine("Waiting for messages");
-            bool start = true;
-            while (!_stops)
+            bool OutputНeaders = true;
+            while (!_StopWaitingData)
             {
-                while (socket.Available < 1 && !_stops)
+                while (socket.Available < 1 && !_StopWaitingData)
                 {
                     Thread.Sleep(100);
                 }
-                if (!_stops)
+                if (!_StopWaitingData)
                 {
-                    if (start)
+                    if (OutputНeaders)
                     {
-                        start = false;
+                        OutputНeaders = false;
                         Console.WriteLine("---------------Chat content--------------------");
                     }
                     var chatContent = ReceiveChatContent(socket);
                     Console.WriteLine(chatContent);
                 }
             }
-            if (!start)
+            if (!OutputНeaders)
             {
                 Console.WriteLine("------------End of chat content----------------");
                 Console.WriteLine();
             }
         }
 
+        // при нажатие Enter прекрашает ожидать данные из сети
         private static async void Enter()
         {
-            await Task.Run(() =>
+            await Task.Run(() => WaitingKeyPress(ConsoleKey.Enter));
+            _StopWaitingData = true;
+        }
+        // Ожидает нажатие определенной клавиши. Клавиша которую нужно
+        // ожидать нажатие передается как входной параметр
+        private static void WaitingKeyPress(ConsoleKey key)
+        {
+            ConsoleKeyInfo keyInfo;
+            do
             {
-                ConsoleKeyInfo keyInfo;
-                do
-                {
-                    keyInfo = Console.ReadKey();
-                } while (keyInfo.Key != ConsoleKey.Enter);
-            });
-            _stops = true;
+                keyInfo = Console.ReadKey();
+            } while (keyInfo.Key != key);
         }
 
-        private static async void Exit(Socket socket)
+        // при нажатие клавише Esc выходит из приложения.
+        private static async void ExitTheChatByPressing(Socket socket)
         {
-            await Task.Run(() =>
-            {
-                ConsoleKeyInfo keyInfo;
-                do
-                {
-                    keyInfo = Console.ReadKey();
-                } while (keyInfo.Key != ConsoleKey.Escape);
-            });
-            _stop = true;
-            Console.WriteLine("");
+            await Task.Run(()  => WaitingKeyPress(ConsoleKey.Escape));
+
+            _isClientAlive = true;
             SendMessageToServer(socket, "");
 
             DisconnectClientFromServer(socket);
@@ -110,12 +103,6 @@ namespace ChatClient
         {
             socket.Disconnect(false);
             Console.WriteLine("Client disconnected from server");
-        }
-
-        private static void WaitForEnterPressedToCloseApplication()
-        {
-            Console.Write("Press [Enter] to close client console application");
-            Console.ReadLine();
         }
 
         private static void SendMessageToServer(Socket socket, string message)
@@ -145,14 +132,6 @@ namespace ChatClient
             Console.Write("Your name:");
             var message = Console.ReadLine();
             return message;
-        }
-
-        private static void ShowChatContent(string chatContent)
-        {
-            Console.WriteLine("---------------Chat content--------------------");
-            Console.WriteLine(chatContent);
-            Console.WriteLine("------------End of chat content----------------");
-            Console.WriteLine();
         }
 
         private static string ReceiveChatContent(Socket socket)

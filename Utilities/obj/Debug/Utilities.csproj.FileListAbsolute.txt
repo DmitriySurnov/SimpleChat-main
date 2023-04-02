@@ -16,3 +16,9 @@ C:\Users\t.student\Source\Repos\SimpleChat-main\Utilities\obj\Debug\Utilities.cs
 C:\Users\t.student\Source\Repos\SimpleChat-main\Utilities\obj\Debug\Utilities.csproj.CoreCompileInputs.cache
 C:\Users\t.student\Source\Repos\SimpleChat-main\Utilities\obj\Debug\Utilities.dll
 C:\Users\t.student\Source\Repos\SimpleChat-main\Utilities\obj\Debug\Utilities.pdb
+D:\Сетевое програмир\Git\SimpleChat-main\Utilities\bin\Debug\Utilities.dll
+D:\Сетевое програмир\Git\SimpleChat-main\Utilities\bin\Debug\Utilities.pdb
+D:\Сетевое програмир\Git\SimpleChat-main\Utilities\obj\Debug\Utilities.csproj.AssemblyReference.cache
+D:\Сетевое програмир\Git\SimpleChat-main\Utilities\obj\Debug\Utilities.csproj.CoreCompileInputs.cache
+D:\Сетевое програмир\Git\SimpleChat-main\Utilities\obj\Debug\Utilities.dll
+D:\Сетевое програмир\Git\SimpleChat-main\Utilities\obj\Debug\Utilities.pdb

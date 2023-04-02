@@ -1,5 +1,4 @@
-﻿using ChatServer.EventsArgs;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace ChatServer
@@ -13,11 +12,6 @@ namespace ChatServer
             new ChatMessage("Enter your joke now:"),
             new ChatMessage("----------------------------"),
         };
-
-        public static void AddMessage(string message, ClientSocketEventArgs e)
-        {
-            _chatLines.Add(new ChatMessage(e.ClientSocket.RemoteEndPoint, message));
-        }
 
         public static void AddMessage(string message, string name)
         {

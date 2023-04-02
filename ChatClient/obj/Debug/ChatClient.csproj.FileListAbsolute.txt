@@ -44,3 +44,14 @@ C:\Users\t.student\Source\Repos\SimpleChat-main\ChatClient\obj\Debug\ChatClient.
 C:\Users\t.student\Source\Repos\SimpleChat-main\ChatClient\obj\Debug\ChatClient.csproj.CopyComplete
 C:\Users\t.student\Source\Repos\SimpleChat-main\ChatClient\obj\Debug\ChatClient.exe
 C:\Users\t.student\Source\Repos\SimpleChat-main\ChatClient\obj\Debug\ChatClient.pdb
+D:\Сетевое програмир\Git\SimpleChat-main\ChatClient\bin\Debug\ChatClient.exe.config
+D:\Сетевое програмир\Git\SimpleChat-main\ChatClient\bin\Debug\ChatClient.exe
+D:\Сетевое програмир\Git\SimpleChat-main\ChatClient\bin\Debug\ChatClient.pdb
+D:\Сетевое програмир\Git\SimpleChat-main\ChatClient\bin\Debug\Utilities.dll
+D:\Сетевое програмир\Git\SimpleChat-main\ChatClient\bin\Debug\Utilities.pdb
+D:\Сетевое програмир\Git\SimpleChat-main\ChatClient\obj\Debug\ChatClient.csproj.AssemblyReference.cache
+D:\Сетевое програмир\Git\SimpleChat-main\ChatClient\obj\Debug\ChatClient.csproj.SuggestedBindingRedirects.cache
+D:\Сетевое програмир\Git\SimpleChat-main\ChatClient\obj\Debug\ChatClient.csproj.CoreCompileInputs.cache
+D:\Сетевое програмир\Git\SimpleChat-main\ChatClient\obj\Debug\ChatClient.csproj.CopyComplete
+D:\Сетевое програмир\Git\SimpleChat-main\ChatClient\obj\Debug\ChatClient.exe
+D:\Сетевое програмир\Git\SimpleChat-main\ChatClient\obj\Debug\ChatClient.pdb

@@ -88,7 +88,7 @@ namespace ChatServer
                     break;
                 ChatDatabase.AddMessage(chatMessage, name);
                 Sender.SendMessage(chatMessage, name ,clientSocket);
-            } while (true);
+            } while (_isServerAlive);
             Sender.RemoveClient(clientSocket);
             DisconnectClient(clientSocket);
         }
