@@ -181,13 +181,16 @@ namespace ChatClient
 
         private static string GetClientName()
         {
-            Console.Write("Your name:");
-            var message = Console.ReadLine();
-            if (message == "")
+            string message;
+            do
             {
-                Console.WriteLine("You didn't enter a name");
-                GetClientName();
-            }
+                Console.Write("Your name:");
+                message = Console.ReadLine();
+                if (message == "")
+                {
+                    Console.WriteLine("You didn't enter a name");
+                }
+            } while (message == "");
             return message;
         }
 
