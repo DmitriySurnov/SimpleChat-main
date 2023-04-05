@@ -67,8 +67,9 @@ namespace ChatClient
                         Console.WriteLine("Введен не правельный номер серрвера");
                         continue;
                     }
-                    var mass = servers[numberServer].Split(':');
-                    return ConnectClientToServer(new IPEndPoint(IPAddress.Parse(mass[0]), int.Parse(mass[1])));
+                    //var mass = servers[numberServer].Split(':');
+                    //return ConnectClientToServer(new IPEndPoint(IPAddress.Parse(mass[0]), int.Parse(mass[1])));
+                    return ConnectClientToServer(servers[numberServer]);
                 }
                 else
                 {

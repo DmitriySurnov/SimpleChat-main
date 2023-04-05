@@ -80,11 +80,11 @@ namespace ChatServer
                     continue;
                 }
                 Socket udpBroadcastSocketSender = new Socket(SocketType.Dgram, ProtocolType.Udp);
-                IPAddress broadcastAddress = SocketUtility.CreateBroadcastAddress();
+                IPAddress broadcastAddress = IpAddressUtility.CreateBroadcastAddress();
                 int port = int.Parse(mass[1]);
                 var broadcastIpEndPoint = new IPEndPoint(IPAddress.Parse(mass[0]), port);
                 udpBroadcastSocketSender.Connect(broadcastIpEndPoint);
-                string Message = SocketUtility.GetLocalAddress() + ":" + Port + "&" + _portReciever;
+                string Message = IpAddressUtility.GetLocalAddress() + ":" + Port;
                 Console.WriteLine("ServerLocatorSender");
                 Console.WriteLine(Message);
                 SocketUtility.SendString(udpBroadcastSocketSender, Message, () => { });

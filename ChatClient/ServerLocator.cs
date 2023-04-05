@@ -10,7 +10,7 @@ namespace ChatClient
 {
     internal class ServerLocator : IDisposable
     {
-        private static List<string> _servers;
+        private static List<IPEndPoint> _servers;
         private static object _lockServers;
         private bool _isStarted;
         private readonly Thread _serverLocatorSenderThread;
@@ -19,11 +19,11 @@ namespace ChatClient
         private readonly Socket _udpBroadcastSocketResiever;
         private static int _portReciever;
 
-        public List<string> Servers => _servers;
+        public List<IPEndPoint> Servers => _servers;
 
         public ServerLocator()
         {
-            _servers = new List<string>();
+            _servers = new List<IPEndPoint>();
             _lockServers = new object();
             _isStarted = false;
 
@@ -55,10 +55,10 @@ namespace ChatClient
 
         private void ServerLocatorSender()
         {
-            IPAddress broadcastAddress = SocketUtility.CreateBroadcastAddress();
+            IPAddress broadcastAddress = IpAddressUtility.CreateBroadcastAddress();
             var broadcastIpEndPoint = new IPEndPoint(broadcastAddress, 11111);
             _udpBroadcastSocketSender.Connect(broadcastIpEndPoint);
-            string Message = SocketUtility.GetLocalAddress() + ":" + _portReciever;
+            string Message = IpAddressUtility.GetLocalAddress() + ":" + _portReciever;
 
             while (_isStarted)
             {
@@ -88,14 +88,15 @@ namespace ChatClient
                 Console.WriteLine("ServerLocatorReciever");
                 Console.WriteLine(stroka);
                 Console.WriteLine("");
-                var mass = stroka.Split('&');
+                var mass = stroka.Split(':');
                 if (mass.Length == 0)
                     continue;
+                IPEndPoint iP = new IPEndPoint(IPAddress.Parse(mass[0]), int.Parse(mass[1]));
                 lock (_lockServers)
                 {
-                    if (!_servers.Contains(mass[0]))
+                    if (!_servers.Contains(iP))
                     {
-                        _servers.Add(mass[0]);
+                        _servers.Add(iP);
                     }
                 }
             }
